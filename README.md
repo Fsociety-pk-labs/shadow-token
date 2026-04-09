@@ -1,7 +1,7 @@
-# Shadow Token
+# Omnivore Corp - Shadow Token CTF
 
 ## Description
-Shadow IT Solutions offers enterprise cloud integration and secure infrastructure deployment. Our platforms provide scalable, resilient architectures for modern businesses. Do you have what it takes to penetrate our subsystems and uncover the hidden flags?
+Omnivore Corp is a global leader in cyber infrastructure and high-governance risk management. Our advanced node architectures are designed to withstand the most sophisticated external threats. Your mission is to infiltrate the Omnivore network, bypass our security protocols, and retrieve the five hidden flags.
 
 ## Getting Started
 

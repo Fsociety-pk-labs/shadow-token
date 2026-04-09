@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-    res.render('home', { title: 'Shadow IT Solutions | Enterprise Cloud Integration' });
+    res.render('home', { title: 'Omnivore Corp | Global Cyber Infrastructure' });
 });
 
 // Easter egg endpoint - discoverable through recon
