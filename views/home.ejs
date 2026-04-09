@@ -1,43 +1,56 @@
-<div class=\"home-wrapper\" style=\"text-align: center;\">
-    <div class=\"hero-section\">
-        <h1 style=\"color: var(--primary-blue); margin: 20px 0;\">Shadow IT Solutions</h1>
-        <p style=\"font-size: 1.1rem; color: var(--text-gray); margin: 10px 0;\">Enterprise Infrastructure & Cloud Platform</p>
+<div class="home-wrapper" style="text-align: center;">
+    <div class="hero-section">
+        <div class="hero-grid"></div>
+        <h1 class="glitch" data-text="OMNIVORE CORP">OMNIVORE CORP</h1>
+        <p style="font-size: 1.2rem; color: var(--text-dim); margin: 1rem 0; font-family: 'Share Tech Mono', monospace;">Cyber Governance & Global Infrastructure</p>
     </div>
 
-    <div class=\"info-box\" style=\"max-width: 700px; margin: 30px auto;\">
-        <div class=\"info-header\">
-            <span class=\"info-title\">System Status</span>
+    <div class="terminal-block" style="text-align: left; max-width: 800px; margin: 2rem auto;">
+        <div style="border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; margin-bottom: 1rem; color: var(--primary-red);">
+            [ SYSTEM STATUS REPORT ]
         </div>
-        <div class=\"info-body\">
-            <p><strong>Status:</strong> All systems operational</p>
-            <p><strong>Last Updated:</strong> 2024-01-15 09:32:00 UTC</p>
-            <p><strong>Services:</strong> Active</p>
-            <p style=\"margin-top: 15px; font-size: 0.9rem;\">Access restricted to authorized personnel. For support contact your system administrator.</p>
+        <div class="system-grid">
+            <div class="system-stat">
+                <span class="stat-label">Core Systems</span>
+                <span class="stat-value">OPERATIONAL</span>
+            </div>
+            <div class="system-stat">
+                <span class="stat-label">Network Load</span>
+                <span class="stat-value">14.2%</span>
+            </div>
+            <div class="system-stat">
+                <span class="stat-label">Uptime</span>
+                <span class="stat-value">99.998%</span>
+            </div>
+            <div class="system-stat">
+                <span class="stat-label">Security Protocol</span>
+                <span class="stat-value" style="color: var(--primary-red);">DEFKON 4</span>
+            </div>
         </div>
+        <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-dim);">
+            Last system pulse: <span id="timestamp" style="color: var(--text-main);">FETCHING...</span>
+        </p>
     </div>
 
-    <div class=\"message-box\" style=\"max-width: 700px; margin: 25px auto;\">
-        <p style=\"margin: 0 0 10px 0;\"><strong>System Notice</strong></p>
-        <p style=\"margin: 0;\">Welcome to Shadow IT Solutions. For account access or technical support, please contact our help desk at support@shadowit.solutions</p>
-    </div>
-
-    <div style=\"max-width: 700px; margin: 30px auto; background: var(--bg-light); border: 1px solid var(--border-light); padding: 20px; border-radius: 8px;\">
-        <h3 style=\"color: var(--primary-blue); margin-top: 0;\">Our Services</h3>
-        <div style=\"text-align: left; color: var(--text-gray);\">
-            <p style=\"margin: 10px 0;\"><strong>Cloud Infrastructure:</strong> Scalable and secure cloud solutions</p>
-            <p style=\"margin: 10px 0;\"><strong>Security Solutions:</strong> Enterprise-grade security services</p>
-            <p style=\"margin: 10px 0;\"><strong>System Management:</strong> Comprehensive IT infrastructure management</p>
-            <p style=\"margin: 10px 0;\"><strong>Technical Support:</strong> 24/7 support for all enterprise clients</p>
+    <div style="max-width: 800px; margin: 3rem auto; text-align: left;">
+        <h3 style="border-left: 3px solid var(--primary-red); padding-left: 1rem;">Enterprise Solutions</h3>
+        <div class="system-grid" style="margin-top: 1.5rem;">
+            <div class="system-stat" style="border-left: 2px solid var(--primary-red);">
+                <span class="stat-label">01 // Infrastructure</span>
+                <p style="font-size: 0.9rem; color: var(--text-main); margin: 0.5rem 0;">Scalable global cloud nodes with 0ms latency.</p>
+            </div>
+            <div class="system-stat" style="border-left: 2px solid var(--primary-red);">
+                <span class="stat-label">02 // Security</span>
+                <p style="font-size: 0.9rem; color: var(--text-main); margin: 0.5rem 0;">AI-driven proactive threat mitigation systems.</p>
+            </div>
+            <div class="system-stat" style="border-left: 2px solid var(--primary-red);">
+                <span class="stat-label">03 // Governance</span>
+                <p style="font-size: 0.9rem; color: var(--text-main); margin: 0.5rem 0;">Tiered access control and regulatory compliance.</p>
+            </div>
         </div>
     </div>
 </div>
 
-<style>
-    .home-wrapper {
-        animation: fadeIn 0.6s ease;
-    }
-
-    .hero-section {
-        padding: 40px 20px;
-    }
-</style>
+<script>
+    document.getElementById('timestamp').innerText = new Date().toISOString().replace('T', ' ').substring(0, 19) + ' UTC';
+</script>

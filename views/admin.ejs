@@ -1,37 +1,34 @@
-<h2 style="text-align: center;">Administrator Control Panel</h2>
+<h2 class="glitch" data-text="ADMINISTRATIVE CONTROL" style="text-align: center;">ADMINISTRATIVE CONTROL</h2>
 
 <% if (flag) { %>
     <div class="success-alert">
-        <span class="alert-icon">SUCCESS</span>
-        <div>
-            <p><strong>Administrative Access Granted</strong></p>
-            <p style="margin-top: 5px; font-size: 0.9rem;">All security certifications verified</p>
-        </div>
+        <div style="font-family: 'Share Tech Mono', monospace; font-weight: bold;">[ ELEVATED ACCESS VERIFIED ]</div>
+        <div style="margin-top: 0.5rem; font-size: 0.9rem; opacity: 0.8;">Root certificate successfully validated. Terminal session encrypted.</div>
     </div>
     
     <div class="flag-box">
         <%= flag %>
     </div>
 
-    <div style="background: var(--bg-light); border: 1px solid var(--border-light); padding: 20px; border-radius: 6px; margin-top: 20px;">
-        <p style="color: var(--text-dark); margin: 0; font-weight: 700;">System Status: Secured</p>
-        <p style="color: var(--text-gray); margin: 10px 0 0 0; font-size: 0.9rem;">All administrators notified of access. Audit log updated.</p>
+    <div class="terminal-block" style="margin-top: 2rem;">
+        <p style="color: var(--terminal-green); font-weight: bold;">System Status: SECURED</p>
+        <p style="color: var(--text-dim); margin-top: 5px; font-size: 0.85rem;">Event: Successful privilege escalation to OMNIVORE-CORE. Audit log entry: #<%= Math.floor(Math.random() * 900000) + 100000 %></p>
     </div>
 
 <% } else { %>
     <div class="error-alert">
-        <span class="alert-icon">ERROR</span>
-        <p><strong>Access Denied</strong></p>
+        <div style="font-family: 'Share Tech Mono', monospace; font-weight: bold;">[ SYSTEM LOCKOUT ]</div>
+        <p style="font-size: 0.85rem; margin-top: 5px;">Insufficient privilege level for requested operation.</p>
     </div>
 
-    <div style="background: var(--bg-light); border: 1px solid var(--border-light); padding: 20px; border-radius: 6px; margin: 20px 0;">
-        <p style="margin: 0 0 10px 0; color: var(--text-dark); font-weight: 700;">Authentication Required</p>
-        <p style="margin: 0; color: var(--text-gray);">
+    <div class="terminal-block" style="margin: 2rem 0;">
+        <p style="color: var(--primary-red); font-weight: bold;">Authentication Error</p>
+        <p style="margin-top: 10px; color: var(--text-main);">
             <%= error %>
         </p>
     </div>
 
-    <div class="hint-text">
-        <strong>Note:</strong> Only authenticated administrators can access this panel. Please verify your credentials.
+    <div class="terminal-block" style="border-left: 3px solid var(--flag-amber); color: var(--flag-amber); font-size: 0.85rem;">
+        <span style="font-weight: bold;">[ OPERATOR ALERT ]</span> Access attempts are logged by the Omnivore Infrastructure Security Layer. Ensure your SSO token is valid before re-attempting.
     </div>
 <% } %>

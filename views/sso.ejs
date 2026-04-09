@@ -1,50 +1,49 @@
-<h2 style="text-align: center;">JWT Token Validation Gateway</h2>
+<h2 class="glitch" data-text="JWT VALIDATION GATEWAY" style="text-align: center;">JWT VALIDATION GATEWAY</h2>
 
 <% if (flag) { %>
     <div class="success-alert">
-        <span class="alert-icon">SUCCESS</span>
-        <div>
-            <p><strong>Token Validation Complete</strong></p>
-            <p style="margin-top: 5px; font-size: 0.9rem;">Secure authentication successful</p>
-        </div>
+        <div style="font-family: 'Share Tech Mono', monospace; font-weight: bold;">[ HMAC VERIFICATION SUCCESS ]</div>
+        <div style="margin-top: 0.5rem; font-size: 0.9rem; opacity: 0.8;">Cryptographic signature validated. Authorizing session...</div>
     </div>
     <div class="flag-box">
         <%= flag %>
     </div>
 <% } else { %>
-    <div style="background: var(--bg-light); border: 1px solid var(--border-light); padding: 15px; border-radius: 6px; margin-bottom: 20px;">
-        <p style="margin: 0; color: var(--text-dark); font-size: 0.9rem;">Status: JWT validation engine active</p>
+    <div class="terminal-block">
+        <p style="margin: 0; color: var(--terminal-green); font-size: 0.9rem;">[ ENGINE STATUS: ACTIVE ] Cryptographic handshake required.</p>
     </div>
 
     <% if (error) { %>
         <div class="error-alert">
-            <span class="alert-icon">ERROR</span>
-            <p><%= error %></p>
+            <span style="font-family: 'Share Tech Mono', monospace; font-weight: bold;">[ SIGNATURE ERR ]</span>
+            <p style="font-size: 0.85rem; margin-top: 5px;"><%= error %></p>
         </div>
     <% } %>
 
     <% if (info) { %>
-        <div class="info-alert">
-            <span class="alert-icon">INFO</span>
-            <p><%= info %></p>
+        <div class="terminal-block" style="border-left: 3px solid var(--flag-amber); color: var(--flag-amber);">
+            <span style="font-weight: bold;">[ SESSION INFO ]</span> <%= info %>
         </div>
     <% } %>
 
-    <form action="/sso" method="POST">
+    <form action="/sso" method="POST" style="margin-top: 1.5rem;">
         <div class="input-group">
-            <label for="token">JWT Token (Header.Payload.Signature)</label>
-            <textarea name="token" id="token" rows="6" required placeholder="Paste JWT token here"><%= jwt %></textarea>
+            <label for="token">JWT Token Stream (Header.Payload.Signature)</label>
+            <textarea name="token" id="token" rows="6" required placeholder="Paste encrypted token string..." style="font-family: 'Share Tech Mono', monospace;"><%= jwt %></textarea>
         </div>
-        <button type="submit">Validate Token</button>
+        <button type="submit">VALIDATION SEQUENCE</button>
     </form>
 
-    <div class="code-block" style="margin-top: 20px;">
-        <code>Header: { "alg": "HS256", "typ": "JWT" }
-Payload: { "role": "guest" }
-Signature: [HMAC-SHA256 hash]</code>
+    <div style="margin-top: 2rem;">
+        <span class="stat-label" style="margin-bottom: 0.5rem; display: block;">PROTO-STRUCTURE //</span>
+        <div class="terminal-block" style="padding: 1rem; border: 1px solid var(--border-faint); background: #000; font-size: 0.8rem;">
+            <code>Header: { "alg": "HS256", "typ": "JWT" }<br/>
+            Payload: { "role": "guest", "iat": <%= Math.floor(Date.now()/1000) %> }<br/>
+            Signature: [ HMAC-SHA256-HASH ]</code>
+        </div>
     </div>
 
-    <div class="hint-text">
-        <strong>Note:</strong> Use valid JWT tokens for authentication. Tokens must be properly signed and verified.
+    <div class="terminal-block" style="margin-top: 2rem; border-left: 3px solid var(--primary-red); color: var(--primary-red); font-size: 0.85rem;">
+        <span style="font-weight: bold;">[ PROTOCOL 9 ]</span> All tokens must be signed with the Omnivore Private Key. Any attempt to bypass signature verification will be logged by the Risk Management engine.
     </div>
 <% } %>

@@ -1,34 +1,33 @@
-<h2 style="text-align: center;">User Profile & Session Management</h2>
+<h2 class="glitch" data-text="IDENTITY MANAGEMENT" style="text-align: center;">IDENTITY MANAGEMENT</h2>
 
 <% if (flag) { %>
     <div class="success-alert">
-        <span class="alert-icon">SUCCESS</span>
-        <div>
-            <p><strong>Admin Access Granted</strong></p>
-            <p style="margin-top: 5px; font-size: 0.9rem;">Session authenticated and verified</p>
-        </div>
+        <div style="font-family: 'Share Tech Mono', monospace; font-weight: bold;">[ SESSION PRIVILEGE ESCALATED ]</div>
+        <div style="margin-top: 0.5rem; font-size: 0.9rem; opacity: 0.8;">Admin token verified. Decryption sequence complete.</div>
     </div>
     <div class="flag-box">
         <%= flag %>
     </div>
 <% } else { %>
-    <div style="background: var(--bg-light); border: 1px solid var(--border-light); padding: 15px; border-radius: 6px; margin-bottom: 20px;">
-        <p style="margin: 0; color: var(--text-dark);">Current User: <strong><%= session.user %></strong></p>
-        <p style="margin: 8px 0 0 0; color: var(--text-dark);">Access Level: <strong><%= session.access %></strong></p>
+    <div class="terminal-block">
+        <p style="margin: 0; color: var(--text-main);">Current Identity: <strong style="color: var(--primary-red);"><%= session.user %></strong></p>
+        <p style="margin: 8px 0 0 0; color: var(--text-main);">Authorization Rank: <strong style="color: var(--primary-red);"><%= session.access %></strong></p>
     </div>
 
     <% if (warning) { %>
-        <div class="info-alert">
-            <span class="alert-icon">INFO</span>
-            <p><%= warning %></p>
+        <div class="terminal-block" style="border-left: 3px solid var(--terminal-green); color: var(--terminal-green); background: rgba(0, 255, 65, 0.02);">
+            <span style="font-weight: bold;">[ LOG ]</span> <%= warning %>
         </div>
     <% } %>
 
-    <div class="code-block">
-        <code><pre><%= JSON.stringify(session, null, 2) %></pre></code>
+    <div style="margin-top: 2rem;">
+        <span class="stat-label" style="margin-bottom: 0.5rem; display: block;">RAW SESSION OBJECT DUMP //</span>
+        <div class="terminal-block" style="padding: 1rem; border: 1px solid var(--border-faint); background: #000;">
+            <pre style="margin: 0; color: var(--terminal-green); font-size: 0.85rem; overflow-x: auto;"><%= JSON.stringify(session, null, 2) %></pre>
+        </div>
     </div>
 
-    <div class="hint-text">
-        💡 <strong>Challenge:</strong> This session data is Base64-encoded in your browser cookie. Edit it to become an admin with access level 1. Use browser DevTools (F12 → Application → Cookies).
+    <div class="terminal-block" style="margin-top: 2rem; border-left: 3px solid var(--flag-amber); color: var(--flag-amber); font-size: 0.85rem;">
+        <span style="font-weight: bold;">[ ANALYST NOTICE ]</span> Session integrity is maintained via Base64-encoded client-side tokens. Discrepancies in Authorization Rank will trigger manual audit.
     </div>
 <% } %>

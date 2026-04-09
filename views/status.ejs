@@ -1,39 +1,42 @@
-<h2 style="text-align: center;">System Diagnostics</h2>
-<p style="text-align: center; color: var(--text-gray); margin-bottom: 20px;">Real-time Infrastructure Monitoring</p>
+<h2 class="glitch" data-text="SYSTEM DIAGNOSTICS" style="text-align: center;">SYSTEM DIAGNOSTICS</h2>
+<p style="text-align: center; color: var(--text-dim); margin-bottom: 2rem; font-family: 'Share Tech Mono', monospace;">REAL-TIME INFRASTRUCTURE MONITORING // OMNIVORE-SENTINEL</p>
 
 <% if (systemStatus) { %>
     <div class="system-grid">
         <div class="system-stat">
-            <span class="stat-label">Status</span>
-            <span class="stat-value"><%= systemStatus.status %></span>
+            <span class="stat-label">Connectivity Status</span>
+            <span class="stat-value" style="color: var(--terminal-green);"><%= systemStatus.status %></span>
         </div>
         <div class="system-stat">
-            <span class="stat-label">Uptime</span>
+            <span class="stat-label">Active Uptime</span>
             <span class="stat-value"><%= systemStatus.uptime %></span>
         </div>
         <div class="system-stat">
-            <span class="stat-label">Database</span>
+            <span class="stat-label">Data Persistence</span>
             <span class="stat-value"><%= systemStatus.database %></span>
         </div>
         <div class="system-stat">
-            <span class="stat-label">Cache</span>
+            <span class="stat-label">Volatility Cache</span>
             <span class="stat-value"><%= systemStatus.cache %></span>
         </div>
     </div>
 
-    <div class="code-block" style="margin: 20px 0;">
+    <div class="terminal-block" style="margin: 2rem 0; font-size: 0.85rem;">
+        <div style="border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; margin-bottom: 1rem; color: var(--primary-red);">
+            [ KERNEL AUDIT TRAIL ]
+        </div>
         <code><%= systemStatus.last_audit %></code>
     </div>
 <% } %>
 
-<div class="flag-box">
+<div class="flag-box" style="margin-top: 2rem;">
     <% if (flag) { %>
         <%= flag %>
     <% } else { %>
-        <span style="opacity: 0.7;">DIAGNOSTIC OUTPUT: NORMAL</span>
+        <span style="opacity: 0.7; font-family: 'Share Tech Mono', monospace;">DIAGNOSTIC OUTPUT: STREAM_STABLE_0x200</span>
     <% } %>
 </div>
 
-<div class="hint-text">
-    💡 <strong>Challenge:</strong> This endpoint requires authentication. Find the auth token parameter to unlock the flag.
+<div class="terminal-block" style="border-left: 3px solid var(--flag-amber); color: var(--flag-amber); margin-top: 2rem; font-size: 0.85rem;">
+    <span style="font-weight: bold;">[ SYSTEM SECURITY ]</span> This endpoint resides within the Protected Governance Zone. Authorization tokens must be passed via the `auth` parameter string. Unauthorized scraping will trigger IP throttling.
 </div>

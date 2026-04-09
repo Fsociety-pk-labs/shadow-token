@@ -1,14 +1,11 @@
-<div class="login-container">
-    <h2>Enterprise Access Portal</h2>
-    <p style="text-align: center; color: var(--text-gray); margin-bottom: 25px;">Authentication Required</p>
+<div class="login-wrapper" style="max-width: 450px; margin: 0 auto; text-align: center;">
+    <h2 class="glitch" data-text="AUTHORIZATION">AUTHORIZATION</h2>
+    <p style="color: var(--text-dim); margin-bottom: 2rem; font-family: 'Share Tech Mono', monospace;">SECURE ACCESS PORTAL // LEVEL 4</p>
 
     <% if (flag) { %>
         <div class="success-alert">
-            <span class="alert-icon">SUCCESS</span>
-            <div>
-                <p><strong>Authentication Successful</strong></p>
-                <p style="margin-top: 5px; font-size: 0.9rem;">Access granted to authorized user</p>
-            </div>
+            <div style="font-family: 'Share Tech Mono', monospace; font-weight: bold;">[ ACCESS GRANTED ]</div>
+            <div style="margin-top: 0.5rem; font-size: 0.9rem; opacity: 0.8;">Primary directive initialized. Flag retrieved.</div>
         </div>
         <div class="flag-box">
             <%= flag %>
@@ -16,43 +13,32 @@
     <% } else { %>
         <% if (error) { %>
             <div class="error-alert">
-                <span class="alert-icon">ERROR</span>
-                <p><%= error %></p>
+                <span style="font-family: 'Share Tech Mono', monospace; font-weight: bold;">[ ACCESS DENIED ]</span>
+                <p style="font-size: 0.85rem; margin-top: 5px;"><%= error %></p>
             </div>
         <% } %>
 
-        <form action="/login" method="POST" style="margin-top: 20px;">
+        <form action="/login" method="POST" style="margin-top: 1rem;">
             <div class="input-group">
-                <label for="username">Username</label>
-                <input type="text" id="username" name="username" placeholder="Enter username" required autocomplete="off">
+                <label for="username">Identity Identifier</label>
+                <input type="text" id="username" name="username" placeholder="UID-0000" required autocomplete="off">
             </div>
             <div class="input-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" placeholder="Enter password" required>
+                <label for="password">Pass-Key</label>
+                <input type="password" id="password" name="password" placeholder="********" required>
             </div>
-            <button type="submit">Authenticate</button>
+            <button type="submit">EXECUTE AUTHENTICATION</button>
         </form>
 
-        <div class="hint-text" style="margin-top: 20px;">
-            <strong>Note:</strong> Log in with your enterprise credentials. For forgotten passwords, contact your system administrator.
+        <div class="terminal-block" style="margin-top: 2rem; padding: 1rem; font-size: 0.8rem; text-align: left;">
+            <span style="color: var(--primary-red);">[ NOTICE ]</span> Use enterprise credentials only. Port 80/443 traffic is being monitored at the kernel level by Omnivore Sentinel. Unauthorized access attempts will trigger local lockout.
         </div>
     <% } %>
 </div>
 
 <!--
-PRIVILEGED INFORMATION:
-Credentials are validated through a Base64-encoded hash.
-Pattern: base64(username:password)
-Look for how credentials are validated in the backend.
-Inspect HTTP requests to see what format is expected.
+    OPERATOR NOTE:
+    The authentication layer uses a Base64-encoded handshake.
+    Format: base64(identity:passkey)
+    Check application logic for validation pattern.
 -->
-
-<style>
-    .login-container {
-        text-align: center;
-    }
-
-    .login-container h2 {
-        text-align: center;
-    }
-</style>
