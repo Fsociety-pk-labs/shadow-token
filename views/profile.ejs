@@ -1,25 +1,25 @@
-<h2 style="text-align: center;">Session Management Dashboard</h2>
+<h2 style="text-align: center;">User Profile & Session Management</h2>
 
 <% if (flag) { %>
     <div class="success-alert">
-        <span class="alert-icon">✓</span>
+        <span class="alert-icon">SUCCESS</span>
         <div>
-            <p><strong>ADMIN ACCESS GRANTED</strong></p>
-            <p style="margin-top: 5px; font-size: 0.9rem;">Stage 3 Complete: Insecure Cryptography Exploited</p>
+            <p><strong>Admin Access Granted</strong></p>
+            <p style="margin-top: 5px; font-size: 0.9rem;">Session authenticated and verified</p>
         </div>
     </div>
     <div class="flag-box">
         <%= flag %>
     </div>
 <% } else { %>
-    <div style="background: rgba(0, 255, 65, 0.05); border: 2px solid var(--terminal-green); padding: 15px; border-radius: 0; margin-bottom: 20px;">
-        <p style="margin: 0; color: var(--terminal-green);">Current User: <strong><%= session.user %></strong></p>
-        <p style="margin: 8px 0 0 0; color: var(--terminal-green);">Access Level: <strong><%= session.access %></strong></p>
+    <div style="background: var(--bg-light); border: 1px solid var(--border-light); padding: 15px; border-radius: 6px; margin-bottom: 20px;">
+        <p style="margin: 0; color: var(--text-dark);">Current User: <strong><%= session.user %></strong></p>
+        <p style="margin: 8px 0 0 0; color: var(--text-dark);">Access Level: <strong><%= session.access %></strong></p>
     </div>
 
     <% if (warning) { %>
         <div class="info-alert">
-            <span class="alert-icon">⚠</span>
+            <span class="alert-icon">INFO</span>
             <p><%= warning %></p>
         </div>
     <% } %>

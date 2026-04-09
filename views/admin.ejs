@@ -1,11 +1,11 @@
-<h2 style="text-align: center; color: var(--primary-red);">⚡ EXECUTIVE CONTROL PANEL ⚡</h2>
+<h2 style="text-align: center;">Administrator Control Panel</h2>
 
 <% if (flag) { %>
     <div class="success-alert">
-        <span class="alert-icon">✓</span>
+        <span class="alert-icon">SUCCESS</span>
         <div>
-            <p><strong>COMPLETE SYSTEM COMPROMISE ACHIEVED</strong></p>
-            <p style="margin-top: 5px; font-size: 0.9rem;">Stage 5 Complete: All Exploits Chained Successfully</p>
+            <p><strong>Administrative Access Granted</strong></p>
+            <p style="margin-top: 5px; font-size: 0.9rem;">All security certifications verified</p>
         </div>
     </div>
     
@@ -13,25 +13,25 @@
         <%= flag %>
     </div>
 
-    <div style="background: rgba(230, 48, 48, 0.1); border: 2px solid var(--primary-red); padding: 20px; border-radius: 0; margin-top: 20px;">
-        <p style="color: var(--primary-red); margin: 0; font-weight: 700;">🚨 SECURITY ALERT 🚨</p>
-        <p style="color: var(--primary-red); margin: 10px 0 0 0; font-family: var(--font-mono); font-size: 0.9rem;">Network has been compromised. All administrators notified.</p>
+    <div style="background: var(--bg-light); border: 1px solid var(--border-light); padding: 20px; border-radius: 6px; margin-top: 20px;">
+        <p style="color: var(--text-dark); margin: 0; font-weight: 700;">System Status: Secured</p>
+        <p style="color: var(--text-gray); margin: 10px 0 0 0; font-size: 0.9rem;">All administrators notified of access. Audit log updated.</p>
     </div>
 
 <% } else { %>
     <div class="error-alert">
-        <span class="alert-icon">✗</span>
+        <span class="alert-icon">ERROR</span>
         <p><strong>Access Denied</strong></p>
     </div>
 
-    <div style="background: rgba(230, 48, 48, 0.05); border: 2px solid var(--primary-red); padding: 20px; border-radius: 0; margin: 20px 0;">
-        <p style="margin: 0 0 10px 0; color: var(--primary-red); font-weight: 700;">AUTHENTICATION REQUIRED</p>
-        <p style="margin: 0; color: var(--text-main);">
+    <div style="background: var(--bg-light); border: 1px solid var(--border-light); padding: 20px; border-radius: 6px; margin: 20px 0;">
+        <p style="margin: 0 0 10px 0; color: var(--text-dark); font-weight: 700;">Authentication Required</p>
+        <p style="margin: 0; color: var(--text-gray);">
             <%= error %>
         </p>
     </div>
 
     <div class="hint-text">
-        💡 <strong>Challenge:</strong> This is the final stage. You need a forged JWT token with "alg":"none" and admin role. Send it to /admin as a POST request.
+        <strong>Note:</strong> Only authenticated administrators can access this panel. Please verify your credentials.
     </div>
 <% } %>

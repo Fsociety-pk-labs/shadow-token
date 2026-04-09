@@ -1,22 +1,22 @@
 <h2 style="text-align: center;">System Diagnostics</h2>
-<p style="text-align: center; color: var(--terminal-green); font-family: var(--font-mono); margin-bottom: 20px;">Real-time Infrastructure Monitoring</p>
+<p style="text-align: center; color: var(--text-gray); margin-bottom: 20px;">Real-time Infrastructure Monitoring</p>
 
 <% if (systemStatus) { %>
     <div class="system-grid">
         <div class="system-stat">
-            <span class="stat-label">STATUS</span>
+            <span class="stat-label">Status</span>
             <span class="stat-value"><%= systemStatus.status %></span>
         </div>
         <div class="system-stat">
-            <span class="stat-label">UPTIME</span>
+            <span class="stat-label">Uptime</span>
             <span class="stat-value"><%= systemStatus.uptime %></span>
         </div>
         <div class="system-stat">
-            <span class="stat-label">DATABASE</span>
+            <span class="stat-label">Database</span>
             <span class="stat-value"><%= systemStatus.database %></span>
         </div>
         <div class="system-stat">
-            <span class="stat-label">CACHE</span>
+            <span class="stat-label">Cache</span>
             <span class="stat-value"><%= systemStatus.cache %></span>
         </div>
     </div>

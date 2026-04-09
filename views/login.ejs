@@ -1,13 +1,13 @@
 <div class="login-container">
     <h2>Enterprise Access Portal</h2>
-    <p style="text-align: center; color: var(--terminal-green); font-family: var(--font-mono); margin-bottom: 25px;">Authentication Required</p>
+    <p style="text-align: center; color: var(--text-gray); margin-bottom: 25px;">Authentication Required</p>
 
     <% if (flag) { %>
         <div class="success-alert">
-            <span class="alert-icon">✓</span>
+            <span class="alert-icon">SUCCESS</span>
             <div>
-                <p><strong>ACCESS GRANTED</strong></p>
-                <p style="margin-top: 5px; font-size: 0.9rem;">Stage 2 Complete: Weak Credentials Exploited</p>
+                <p><strong>Authentication Successful</strong></p>
+                <p style="margin-top: 5px; font-size: 0.9rem;">Access granted to authorized user</p>
             </div>
         </div>
         <div class="flag-box">
@@ -16,7 +16,7 @@
     <% } else { %>
         <% if (error) { %>
             <div class="error-alert">
-                <span class="alert-icon">✗</span>
+                <span class="alert-icon">ERROR</span>
                 <p><%= error %></p>
             </div>
         <% } %>
@@ -24,17 +24,17 @@
         <form action="/login" method="POST" style="margin-top: 20px;">
             <div class="input-group">
                 <label for="username">Username</label>
-                <input type="text" id="username" name="username" placeholder="••••••••" required autocomplete="off">
+                <input type="text" id="username" name="username" placeholder="Enter username" required autocomplete="off">
             </div>
             <div class="input-group">
                 <label for="password">Password</label>
-                <input type="password" id="password" name="password" placeholder="••••••••" required>
+                <input type="password" id="password" name="password" placeholder="Enter password" required>
             </div>
-            <button type="submit">AUTHENTICATE</button>
+            <button type="submit">Authenticate</button>
         </form>
 
         <div class="hint-text" style="margin-top: 20px;">
-            💡 <strong>Hint:</strong> Credentials are encoded somewhere in the application. Check network requests and source code.
+            <strong>Note:</strong> Log in with your enterprise credentials. For forgotten passwords, contact your system administrator.
         </div>
     <% } %>
 </div>
