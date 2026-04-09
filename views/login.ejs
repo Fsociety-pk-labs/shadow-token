@@ -1,7 +1,7 @@
 <div class="login-container">
     <div class="login-header">
-        <h2>Employee Network Portal</h2>
-        <p class="login-subtitle">Enterprise Single Sign-On (SSO) Authentication</p>
+        <h2>Enterprise Access Portal</h2>
+        <p class="login-subtitle">Shadow Network Authentication System</p>
     </div>
 
     <% if (flag) { %>
@@ -12,9 +12,8 @@
         <div class="flag-box">
             <%= flag %>
         </div>
-        <p class="info-text" style="margin-top: 20px;">You have been granted temporary access. All login attempts are logged.</p>
     <% } else { %>
-        <p class="login-info">Enterprise credentials required. Your activity is monitored.</p>
+        <p class="login-info">Enterprise credentials required. Access is monitored.</p>
         
         <% if (error) { %>
             <div class="error-alert">
@@ -26,18 +25,29 @@
         <form action="/login" method="POST" class="login-form">
             <div class="input-group">
                 <label for="username">Username</label>
-                <input type="text" id="username" name="username" placeholder="employee_id" required autocomplete="off">
-                <small class="input-hint">Hint: Try to find credentials in the web application</small>
+                <input type="text" id="username" name="username" placeholder="••••••••" required autocomplete="off" data-hint="hint: look for exposed creds">
             </div>
             <div class="input-group">
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password" placeholder="••••••••" required>
-                <small class="input-hint">Look for exposed credentials in unexpected places</small>
             </div>
             <button type="submit">Authenticate</button>
         </form>
     <% } %>
 </div>
+
+<!-- 
+    ⚠️ SECURITY AUDIT LOG - CONFIDENTIAL
+    
+    Found during code review:
+    - Credentials appear to be encoded somewhere in the network
+    - Check request/response headers for exposed data
+    - Employee credentials stored in hash format for internal validation
+    - Warning: Developers may have left debugging credentials
+    
+    DEBUG MODE: Look in the page source for hidden attributes
+    Hint: Credentials take the form: username:password as base64
+-->
 
 <style>
     .login-container {
@@ -46,12 +56,14 @@
 
     .login-header h2 {
         margin-bottom: 5px;
+        text-align: center;
     }
 
     .login-subtitle {
         color: var(--accent-cyan);
         font-size: 0.9rem;
         margin: 0 0 20px 0;
+        text-align: center;
     }
 
     .login-info {
@@ -92,15 +104,15 @@
         margin: 0;
     }
 
-    .input-hint {
-        display: block;
-        font-size: 0.75rem;
-        color: var(--accent-purple);
-        margin-top: 5px;
-        font-style: italic;
-    }
-
     .login-form {
         margin-top: 20px;
+    }
+
+    .input-group input {
+        transition: all 0.3s ease;
+    }
+
+    .input-group input:focus {
+        box-shadow: 0 0 20px rgba(0, 240, 255, 0.2) !important;
     }
 </style>

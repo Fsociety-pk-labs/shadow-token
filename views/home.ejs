@@ -1,234 +1,210 @@
 <div class="home-container">
     <div class="hero-section">
-        <h2>Shadow IT Solutions</h2>
-        <p class="tagline">Enterprise Infrastructure & Cloud Integration</p>
+        <div class="glitch-text" data-text="SHADOW">SHADOW</div>
+        <p class="company-status">NETWORK STATUS: <span class="status-active">ACTIVE</span></p>
     </div>
 
-    <div class="company-intro">
-        <p><strong>Shadow IT Solutions</strong> provides cutting-edge cloud infrastructure, enterprise security deployment, and scalable system architectures.</p>
-        <p>Our enterprise-grade platforms power modern business operations with resilient, distributed infrastructure designed for today's threat landscape.</p>
-    </div>
+    <div class="main-content">
+        <div class="terminal-window">
+            <div class="terminal-header">
+                <span class="terminal-title">shadow@network:~#</span>
+                <span class="terminal-controls">
+                    <span class="control-dot"></span>
+                    <span class="control-dot"></span>
+                    <span class="control-dot"></span>
+                </span>
+            </div>
+            <div class="terminal-body">
+                <p>Welcome to Shadow IT Solutions</p>
+                <p>Enterprise Infrastructure & Cloud Integration Platform</p>
+                <p class="text-secondary">>_ System initialized</p>
+                <p class="text-secondary">>_ Security audit in progress...</p>
+                <p></p>
+                <p>This is a secure network. Unauthorized access is prohibited.</p>
+                <p class="text-secondary">>_ Type 'help' for available commands</p>
+            </div>
+        </div>
 
-    <div class="challenge-section">
-        <h3>Security Assessment Challenge</h3>
-        <p>This platform contains multiple security vulnerabilities across different stages. Your objective is to identify and exploit each vulnerability to retrieve hidden flags.</p>
-        
-        <div class="stages-overview">
-            <div class="stage-card">
-                <h4>Stage 1: Information Disclosure</h4>
-                <p>Discover hidden endpoints through reconnaissance and server misconfiguration.</p>
-            </div>
-            <div class="stage-card">
-                <h4>Stage 2: Weak Credentials</h4>
-                <p>Identify exposed authentication secrets through code analysis.</p>
-            </div>
-            <div class="stage-card">
-                <h4>Stage 3: Insecure Cryptography</h4>
-                <p>Exploit weak session token handling and Base64 encoding.</p>
-            </div>
-            <div class="stage-card">
-                <h4>Stage 4: JWT Vulnerabilities</h4>
-                <p>Bypass authentication using CVE-2015-9235 algorithm none exploit.</p>
-            </div>
-            <div class="stage-card">
-                <h4>Stage 5: Access Control</h4>
-                <p>Chain exploits to compromise the administrative control panel.</p>
-            </div>
+        <div class="message-box">
+            <p>⚠️ <strong>NOTICE:</strong> This system contains sensitive data. Only authorized personnel may access internal services.</p>
+            <p style="margin-top: 10px; font-size: 0.9rem; color: var(--text-secondary);">
+                If you believe you have authorization, investigate the network topology and locate the entry points.
+            </p>
+        </div>
+
+        <div class="footer-info">
+            <p>Last system check: 2024-01-15 09:32:00 UTC</p>
+            <p>All activities are logged and monitored</p>
         </div>
     </div>
 
-    <div class="portal-links">
-        <h3>Internal Services</h3>
-        <div class="links-grid">
-            <a href="/login" class="service-link">
-                <span class="link-icon">🔐</span>
-                <span class="link-text">Employee Portal</span>
-            </a>
-            <a href="/profile" class="service-link">
-                <span class="link-icon">📊</span>
-                <span class="link-text">Session Dashboard</span>
-            </a>
-            <a href="/sso" class="service-link">
-                <span class="link-icon">🔑</span>
-                <span class="link-text">SSO Gateway</span>
-            </a>
-            <a href="/robots.txt" class="service-link">
-                <span class="link-icon">🤖</span>
-                <span class="link-text">robots.txt</span>
-            </a>
-        </div>
-    </div>
-
-    <div class="reconnaissance-hint">
-        <h3>Getting Started</h3>
-        <p>Begin your assessment by:</p>
-        <ol>
-            <li>Examining the application structure and public endpoints</li>
-            <li>Checking for exposed configuration files</li>
-            <li>Inspecting front-end source code for credentials</li>
-            <li>Analyzing HTTP requests and responses</li>
-            <li>Testing known web application vulnerabilities</li>
-        </ol>
-    </div>
+    <!-- Hidden hints in source code for curious investigators -->
+    <!-- 
+    SHADOW NETWORK - SECURITY AUDIT LOG
+    
+    Hint 1: Check the server's public configuration files. Webmasters often leave clues in plain sight.
+    
+    Debug: Different microservices are exposed at:
+    - /diagnostic-status (requires proper auth token)
+    - /login (employee portal)
+    - /profile (session management)
+    - /sso (identity provider)
+    
+    Warning: Some endpoints may contain Base64 encoded credentials in HTTP headers.
+    The JWT tokens can be inspected using browser DevTools (F12 -> Application -> Cookies/Storage)
+    
+    Known vulnerabilities being tested:
+    CVE-2015-9235 (JWT alg:none bypass) - check /sso endpoint
+    Weak session tokens - check /profile endpoint
+    Information disclosure - look for robots.txt or sitemap
+    
+    For penetration testers: decode base64 strings found in network requests
+    -->
 </div>
 
 <style>
     .home-container {
         text-align: center;
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
     }
 
     .hero-section {
-        margin-bottom: 30px;
-    }
-
-    .hero-section h2 {
-        font-size: 2.5rem;
-        margin: 0;
-    }
-
-    .tagline {
-        color: var(--accent-purple);
-        font-size: 1.1rem;
-        margin: 10px 0;
-    }
-
-    .company-intro {
-        background: rgba(0, 240, 255, 0.05);
-        border-left: 3px solid var(--accent-cyan);
-        padding: 20px;
-        border-radius: 8px;
-        margin: 25px 0;
-        text-align: left;
-    }
-
-    .company-intro p {
-        margin: 10px 0;
-        line-height: 1.6;
-    }
-
-    .challenge-section {
-        margin: 30px 0;
-        text-align: left;
-    }
-
-    .challenge-section h3 {
         text-align: center;
-        color: var(--accent-cyan);
+        margin-bottom: 10px;
     }
 
-    .challenge-section > p {
-        text-align: center;
-        margin-bottom: 20px;
+    .glitch-text {
+        font-size: 3.5rem;
+        font-weight: 900;
+        letter-spacing: 3px;
+        background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        position: relative;
+        animation: glitch 0.3s infinite;
+        text-transform: uppercase;
     }
 
-    .stages-overview {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 12px;
-        margin: 20px 0;
+    @keyframes glitch {
+        0% { transform: translate(0); }
+        20% { transform: translate(-2px, 2px); }
+        40% { transform: translate(-2px, -2px); }
+        60% { transform: translate(2px, 2px); }
+        80% { transform: translate(2px, -2px); }
+        100% { transform: translate(0); }
     }
 
-    @media (min-width: 600px) {
-        .stages-overview {
-            grid-template-columns: repeat(2, 1fr);
-        }
-    }
-
-    .stage-card {
-        background: rgba(0, 0, 0, 0.2);
-        border: 1px solid var(--border-color);
-        border-left: 3px solid var(--accent-purple);
-        padding: 15px;
-        border-radius: 6px;
-        text-align: left;
-    }
-
-    .stage-card h4 {
-        margin: 0 0 8px 0;
-        color: var(--accent-cyan);
-        font-size: 0.95rem;
-    }
-
-    .stage-card p {
-        margin: 0;
+    .company-status {
         font-size: 0.9rem;
+        letter-spacing: 2px;
+        margin: 15px 0 0 0;
         color: var(--text-secondary);
+        font-family: var(--font-mono);
     }
 
-    .portal-links {
-        margin: 30px 0;
-        text-align: left;
+    .status-active {
+        color: #00ff41;
+        animation: pulse 2s infinite;
     }
 
-    .portal-links h3 {
-        text-align: center;
-        color: var(--accent-cyan);
+    @keyframes pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.5; }
     }
 
-    .links-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 15px;
-        margin: 20px 0;
-    }
-
-    @media (min-width: 600px) {
-        .links-grid {
-            grid-template-columns: repeat(4, 1fr);
-        }
-    }
-
-    .service-link {
+    .main-content {
         display: flex;
         flex-direction: column;
+        gap: 25px;
         align-items: center;
-        gap: 10px;
-        padding: 20px;
-        background: rgba(0, 240, 255, 0.05);
-        border: 1px solid var(--border-color);
+    }
+
+    .terminal-window {
+        width: 100%;
+        max-width: 600px;
+        background: rgba(0, 0, 0, 0.6);
+        border: 2px solid var(--accent-cyan);
         border-radius: 8px;
-        text-decoration: none;
-        color: inherit;
-        transition: all 0.3s ease;
+        box-shadow: 0 0 30px rgba(0, 240, 255, 0.2), inset 0 0 20px rgba(0, 240, 255, 0.05);
+        overflow: hidden;
+        animation: panelscan 4s linear infinite;
     }
 
-    .service-link:hover {
-        background: rgba(0, 240, 255, 0.1);
-        border-color: var(--accent-cyan);
-        transform: translateY(-2px);
+    @keyframes panelscan {
+        0%, 100% { box-shadow: 0 0 30px rgba(0, 240, 255, 0.2), inset 0 0 20px rgba(0, 240, 255, 0.05); }
+        50% { box-shadow: 0 0 50px rgba(0, 240, 255, 0.4), inset 0 0 30px rgba(0, 240, 255, 0.1); }
     }
 
-    .link-icon {
-        font-size: 2rem;
+    .terminal-header {
+        background: linear-gradient(90deg, rgba(0, 240, 255, 0.1), rgba(176, 38, 255, 0.1));
+        border-bottom: 1px solid var(--border-color);
+        padding: 12px 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
 
-    .link-text {
-        font-size: 0.9rem;
+    .terminal-title {
+        font-family: var(--font-mono);
         color: var(--accent-cyan);
-        text-align: center;
+        font-size: 0.9rem;
+        font-weight: 600;
     }
 
-    .reconnaissance-hint {
-        background: rgba(176, 38, 255, 0.05);
-        border-left: 3px solid var(--accent-purple);
+    .terminal-controls {
+        display: flex;
+        gap: 8px;
+    }
+
+    .control-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: var(--accent-cyan);
+    }
+
+    .terminal-body {
         padding: 20px;
-        border-radius: 8px;
-        margin-top: 30px;
+        font-family: var(--font-mono);
+        font-size: 0.9rem;
+        line-height: 1.8;
         text-align: left;
     }
 
-    .reconnaissance-hint h3 {
-        margin-top: 0;
-        color: var(--accent-purple);
-    }
-
-    .reconnaissance-hint ol {
-        margin: 15px 0;
-        padding-left: 20px;
-    }
-
-    .reconnaissance-hint li {
+    .terminal-body p {
         margin: 8px 0;
+        color: #00ff41;
+    }
+
+    .text-secondary {
+        color: var(--accent-purple) !important;
+    }
+
+    .message-box {
+        width: 100%;
+        max-width: 600px;
+        background: rgba(255, 193, 7, 0.05);
+        border: 2px solid #ffc107;
+        border-radius: 8px;
+        padding: 20px;
+        color: #ffc107;
+        font-size: 0.95rem;
+        text-align: left;
+    }
+
+    .message-box p {
+        margin: 8px 0;
+    }
+
+    .footer-info {
+        font-size: 0.85rem;
         color: var(--text-secondary);
+        font-family: var(--font-mono);
+    }
+
+    .footer-info p {
+        margin: 4px 0;
     }
 </style>
