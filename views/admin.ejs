@@ -1,0 +1,17 @@
+<h2><%= title %></h2>
+
+<% if (flag) { %>
+    <p>Warning: Executive level access established.</p>
+    <p>You have successfully bypassed network safety perimeters to reach the master control node.</p>
+    
+    <div class="flag-box">
+        <%= flag || 'System Flag Not Sourced from Environment' %>
+    </div>
+
+    <h3>Operations Dashboard</h3>
+    <p>All core infrastructure nodes are currently secure.</p>
+<% } else { %>
+    <div class="error"><%= error %></div>
+    
+    <p>This area requires an Executive payload signature. Standard network identities are prohibited.</p>
+<% } %>

@@ -1,0 +1,28 @@
+<h2>Employee Network Login</h2>
+
+<% if (flag) { %>
+    <p>Authentication validation passed.</p>
+    <div class="flag-box">
+        <%= flag %>
+    </div>
+<% } else { %>
+    <p>Please authenticate using your active directory credentials.</p>
+    
+    <% if (error) { %>
+        <div class="error"><%= error %></div>
+    <% } %>
+
+    <form action="/login" method="POST">
+        <div class="input-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" placeholder="e.g. jdoe" required>
+        </div>
+        <div class="input-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <button type="submit">Secure Login</button>
+    </form>
+    
+    <!-- Legacy Default Admins: Remember to disable admin:shadow_admin_2024 before Q3 rollout -->
+<% } %>

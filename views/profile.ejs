@@ -1,0 +1,18 @@
+<h2>Session Overview Dashboard</h2>
+
+<% if (flag) { %>
+    <p>Administrator session established.</p>
+    <div class="flag-box">
+        <%= flag %>
+    </div>
+<% } else { %>
+    <p>Standard profile mapped. Elevated functions are restricted.</p>
+    
+    <h3>Current Session Profile</h3>
+    <pre><%= JSON.stringify(session, null, 2) %></pre>
+    
+    <p style="color: #666; font-size: 0.9rem; margin-top: 20px;">
+        Note: The 'session_data' cookie stores the active role and access level. Valid administrative access requires level 1 for user "admin".
+    </p>
+
+<% } %>

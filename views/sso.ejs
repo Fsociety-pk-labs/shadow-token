@@ -1,0 +1,27 @@
+<h2>SSO Token Diagnostics Gateway</h2>
+
+<% if (flag) { %>
+    <p>Administrative token bypass detected.</p>
+    <div class="flag-box">
+        <%= flag %>
+    </div>
+<% } else { %>
+    <p>Welcome to the secure SSO evaluation endpoint.</p>
+    <p>Submit your enterprise JWT below to verify validation algorithms and payload roles.</p>
+    
+    <% if (error) { %>
+        <div class="error"><%= error %></div>
+    <% } %>
+
+    <form action="/sso" method="POST">
+        <div class="input-group">
+            <label for="token">Enterprise Web Token (JWT):</label>
+            <textarea name="token" id="token" rows="5" required><%= jwt %></textarea>
+        </div>
+        <button type="submit">Execute Diagnostics</button>
+    </form>
+
+    <p style="color: #666; font-size: 0.85rem; margin-top: 25px;">
+        Warning: Our identity provider currently allows strict signature enforcement. If a token specifies "none" as its signing algorithm, it may bypass validation boundaries. Proceed with caution.
+    </p>
+<% } %>
