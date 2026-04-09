@@ -1,118 +1,58 @@
 <div class="login-container">
-    <div class="login-header">
-        <h2>Enterprise Access Portal</h2>
-        <p class="login-subtitle">Shadow Network Authentication System</p>
-    </div>
+    <h2>Enterprise Access Portal</h2>
+    <p style="text-align: center; color: var(--terminal-green); font-family: var(--font-mono); margin-bottom: 25px;">Authentication Required</p>
 
     <% if (flag) { %>
         <div class="success-alert">
             <span class="alert-icon">✓</span>
-            <p>Authentication validation passed successfully.</p>
+            <div>
+                <p><strong>ACCESS GRANTED</strong></p>
+                <p style="margin-top: 5px; font-size: 0.9rem;">Stage 2 Complete: Weak Credentials Exploited</p>
+            </div>
         </div>
         <div class="flag-box">
             <%= flag %>
         </div>
     <% } else { %>
-        <p class="login-info">Enterprise credentials required. Access is monitored.</p>
-        
         <% if (error) { %>
             <div class="error-alert">
-                <span class="alert-icon">⚠</span>
+                <span class="alert-icon">✗</span>
                 <p><%= error %></p>
             </div>
         <% } %>
 
-        <form action="/login" method="POST" class="login-form">
+        <form action="/login" method="POST" style="margin-top: 20px;">
             <div class="input-group">
                 <label for="username">Username</label>
-                <input type="text" id="username" name="username" placeholder="••••••••" required autocomplete="off" data-hint="hint: look for exposed creds">
+                <input type="text" id="username" name="username" placeholder="••••••••" required autocomplete="off">
             </div>
             <div class="input-group">
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password" placeholder="••••••••" required>
             </div>
-            <button type="submit">Authenticate</button>
+            <button type="submit">AUTHENTICATE</button>
         </form>
+
+        <div class="hint-text" style="margin-top: 20px;">
+            💡 <strong>Hint:</strong> Credentials are encoded somewhere in the application. Check network requests and source code.
+        </div>
     <% } %>
 </div>
 
-<!-- 
-    ⚠️ SECURITY AUDIT LOG - CONFIDENTIAL
-    
-    Found during code review:
-    - Credentials appear to be encoded somewhere in the network
-    - Check request/response headers for exposed data
-    - Employee credentials stored in hash format for internal validation
-    - Warning: Developers may have left debugging credentials
-    
-    DEBUG MODE: Look in the page source for hidden attributes
-    Hint: Credentials take the form: username:password as base64
+<!--
+PRIVILEGED INFORMATION:
+Credentials are validated through a Base64-encoded hash.
+Pattern: base64(username:password)
+Look for how credentials are validated in the backend.
+Inspect HTTP requests to see what format is expected.
 -->
 
 <style>
     .login-container {
-        text-align: left;
-    }
-
-    .login-header h2 {
-        margin-bottom: 5px;
         text-align: center;
     }
 
-    .login-subtitle {
-        color: var(--accent-cyan);
-        font-size: 0.9rem;
-        margin: 0 0 20px 0;
+    .login-container h2 {
         text-align: center;
-    }
-
-    .login-info {
-        color: var(--text-secondary);
-        margin: 15px 0;
-        font-size: 0.95rem;
-        border-left: 2px solid var(--accent-purple);
-        padding-left: 12px;
-    }
-
-    .success-alert, .error-alert {
-        display: flex;
-        align-items: center;
-        padding: 15px;
-        border-radius: 8px;
-        margin-bottom: 20px;
-        gap: 12px;
-    }
-
-    .success-alert {
-        background: rgba(0, 240, 255, 0.1);
-        border: 1px solid var(--accent-cyan);
-        color: var(--accent-cyan);
-    }
-
-    .error-alert {
-        background: rgba(255, 77, 77, 0.1);
-        border: 1px solid #ff4d4d;
-        color: #ff4d4d;
-    }
-
-    .alert-icon {
-        font-size: 1.2rem;
-        font-weight: bold;
-    }
-
-    .alert-icon + p {
-        margin: 0;
-    }
-
-    .login-form {
-        margin-top: 20px;
-    }
-
-    .input-group input {
-        transition: all 0.3s ease;
-    }
-
-    .input-group input:focus {
-        box-shadow: 0 0 20px rgba(0, 240, 255, 0.2) !important;
     }
 </style>

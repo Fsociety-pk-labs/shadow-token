@@ -1,174 +1,50 @@
-<div class="sso-container">
-    <div class="sso-header">
-        <h2>SSO Token Validation Gateway</h2>
-        <p class="sso-subtitle">JWT Authentication & Algorithm Verification</p>
+<h2 style="text-align: center;">JWT Token Validation Gateway</h2>
+
+<% if (flag) { %>
+    <div class="success-alert">
+        <span class="alert-icon">✓</span>
+        <div>
+            <p><strong>CVE-2015-9235 VULNERABILITY EXPLOITED</strong></p>
+            <p style="margin-top: 5px; font-size: 0.9rem;">Stage 4 Complete: JWT Algorithm Bypass</p>
+        </div>
+    </div>
+    <div class="flag-box">
+        <%= flag %>
+    </div>
+<% } else { %>
+    <div style="background: rgba(0, 255, 65, 0.05); border: 2px solid var(--terminal-green); padding: 15px; border-radius: 0; margin-bottom: 20px;">
+        <p style="margin: 0; color: var(--terminal-green); font-family: var(--font-mono); font-size: 0.9rem;">Status: Token Validation Engine Active</p>
     </div>
 
-    <% if (flag) { %>
-        <div class="success-alert">
-            <span class="alert-icon">✓</span>
-            <p><%= info %></p>
-        </div>
-        <div class="flag-box">
-            <%= flag %>
-        </div>
-    <% } else { %>
-        <div class="sso-info">
-            <p><strong>Endpoint Status:</strong> Active and Monitoring</p>
-            <p>Submit your JWT token for cryptographic validation and role verification.</p>
-        </div>
-        
-        <% if (error) { %>
-            <div class="error-alert">
-                <span class="alert-icon">✗</span>
-                <p><%= error %></p>
-            </div>
-        <% } %>
-
-        <% if (info) { %>
-            <div class="info-alert">
-                <span class="alert-icon">ℹ</span>
-                <p><%= info %></p>
-            </div>
-        <% } %>
-
-        <form action="/sso" method="POST" class="sso-form">
-            <div class="input-group">
-                <label for="token">JWT Token Payload:</label>
-                <textarea name="token" id="token" rows="6" required placeholder="Paste your JWT here..."><%= jwt %></textarea>
-                <small class="input-hint">Format: header.payload.signature</small>
-            </div>
-            <button type="submit">Validate Token</button>
-        </form>
-
-        <div class="jwt-guide">
-            <h3>JWT Structure</h3>
-            <div class="code-block">
-<pre><code>Header: { "alg": "HS256", "typ": "JWT" }
-Payload: { "role": "guest", "iat": 1234567890 }
-Signature: [calculated HMAC]</code></pre>
-            </div>
-            <p class="hint-text">💡 <strong>Challenge:</strong> Modify the token's algorithm and payload to gain admin access. What happens if you change the algorithm to "none"?</p>
-            <p class="security-warning">⚠ <strong>CVE-2015-9235:</strong> Some JWT libraries have a vulnerability where the "none" algorithm bypasses signature verification.</p>
+    <% if (error) { %>
+        <div class="error-alert">
+            <span class="alert-icon">✗</span>
+            <p><%= error %></p>
         </div>
     <% } %>
-</div>
 
-<style>
-    .sso-container {
-        text-align: left;
-    }
+    <% if (info) { %>
+        <div class="info-alert">
+            <span class="alert-icon">ℹ</span>
+            <p><%= info %></p>
+        </div>
+    <% } %>
 
-    .sso-header h2 {
-        margin-bottom: 5px;
-    }
+    <form action="/sso" method="POST">
+        <div class="input-group">
+            <label for="token">JWT Token (Header.Payload.Signature)</label>
+            <textarea name="token" id="token" rows="6" required placeholder="Paste JWT here..."><%= jwt %></textarea>
+        </div>
+        <button type="submit">VALIDATE TOKEN</button>
+    </form>
 
-    .sso-subtitle {
-        color: var(--accent-cyan);
-        font-size: 0.9rem;
-        margin: 0 0 20px 0;
-    }
+    <div class="code-block" style="margin-top: 20px;">
+        <code>Header: { "alg": "HS256", "typ": "JWT" }
+Payload: { "role": "guest" }
+Signature: [HMAC-SHA256 hash]</code>
+    </div>
 
-    .sso-info {
-        background: rgba(0, 240, 255, 0.05);
-        border: 1px solid var(--border-color);
-        padding: 15px;
-        border-radius: 8px;
-        margin-bottom: 20px;
-    }
-
-    .sso-info p {
-        margin: 6px 0;
-    }
-
-    .error-alert, .info-alert {
-        display: flex;
-        align-items: flex-start;
-        gap: 12px;
-        padding: 15px;
-        border-radius: 8px;
-        margin-bottom: 20px;
-    }
-
-    .error-alert {
-        background: rgba(255, 77, 77, 0.1);
-        border: 1px solid #ff4d4d;
-        color: #ff4d4d;
-    }
-
-    .info-alert {
-        background: rgba(0, 240, 255, 0.1);
-        border: 1px solid var(--accent-cyan);
-        color: var(--accent-cyan);
-    }
-
-    .error-alert .alert-icon, .info-alert .alert-icon {
-        font-size: 1.2rem;
-        flex-shrink: 0;
-        margin-top: 2px;
-    }
-
-    .error-alert p, .info-alert p {
-        margin: 0;
-    }
-
-    .sso-form {
-        margin: 20px 0;
-    }
-
-    .input-hint {
-        display: block;
-        font-size: 0.75rem;
-        color: var(--text-secondary);
-        margin-top: 5px;
-    }
-
-    .jwt-guide {
-        background: rgba(0, 0, 0, 0.2);
-        border: 1px solid var(--border-color);
-        padding: 20px;
-        border-radius: 8px;
-        margin-top: 25px;
-    }
-
-    .jwt-guide h3 {
-        margin-top: 0;
-        color: var(--accent-cyan);
-    }
-
-    .code-block {
-        background: rgba(0, 0, 0, 0.4);
-        border: 1px solid var(--border-color);
-        border-radius: 6px;
-        overflow-x: auto;
-        margin: 12px 0;
-    }
-
-    .code-block code {
-        display: block;
-        padding: 15px;
-        font-family: var(--font-mono);
-        color: var(--accent-cyan);
-        font-size: 0.9rem;
-        margin: 0;
-        line-height: 1.5;
-    }
-
-    .hint-text {
-        background: rgba(176, 38, 255, 0.1);
-        padding: 12px;
-        border-left: 2px solid var(--accent-purple);
-        margin: 12px 0;
-        font-size: 0.9rem;
-        color: var(--text-secondary);
-    }
-
-    .security-warning {
-        background: rgba(255, 193, 7, 0.1);
-        padding: 12px;
-        border-left: 2px solid #ffc107;
-        margin: 12px 0;
-        font-size: 0.9rem;
-        color: #ffc107;
-    }
-</style>
+    <div class="hint-text">
+        💡 <strong>Challenge:</strong> What if you change the "alg" field to "none"? Try forging a new JWT with admin role (CVE-2015-9235).
+    </div>
+<% } %>
