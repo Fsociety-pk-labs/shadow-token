@@ -1,17 +1,193 @@
-<h2><%= title %></h2>
-
-<% if (flag) { %>
-    <p>Warning: Executive level access established.</p>
-    <p>You have successfully bypassed network safety perimeters to reach the master control node.</p>
-    
-    <div class="flag-box">
-        <%= flag || 'System Flag Not Sourced from Environment' %>
+<div class="admin-container">
+    <div class="admin-header">
+        <h2><%= title %></h2>
+        <p class="admin-subtitle">Restricted Executive Control Panel</p>
     </div>
 
-    <h3>Operations Dashboard</h3>
-    <p>All core infrastructure nodes are currently secure.</p>
-<% } else { %>
-    <div class="error"><%= error %></div>
-    
-    <p>This area requires an Executive payload signature. Standard network identities are prohibited.</p>
-<% } %>
+    <% if (flag) { %>
+        <div class="success-alert large">
+            <span class="alert-icon">✓</span>
+            <p><strong>System Compromise Detected!</strong></p>
+            <p>You have successfully exploited the authentication system and reached the master control node.</p>
+        </div>
+        
+        <div class="flag-box">
+            <%= flag %>
+        </div>
+
+        <div class="admin-dashboard">
+            <h3>Executive Operations Dashboard</h3>
+            <div class="operations-grid">
+                <div class="op-card">
+                    <span class="op-label">STATUS</span>
+                    <span class="op-value">COMPROMISED</span>
+                </div>
+                <div class="op-card">
+                    <span class="op-label">AUTH LEVEL</span>
+                    <span class="op-value">ADMINISTRATOR</span>
+                </div>
+                <div class="op-card">
+                    <span class="op-label">ACCESS</span>
+                    <span class="op-value">UNRESTRICTED</span>
+                </div>
+            </div>
+            <p class="warning-text">All core infrastructure is now under your control. Audit trails have been disabled.</p>
+        </div>
+
+    <% } else { %>
+        <div class="error-alert large">
+            <span class="alert-icon">✗</span>
+            <p><strong>Access Denied</strong></p>
+            <p><%= error %></p>
+        </div>
+        
+        <div class="access-requirements">
+            <h3>Authentication Requirements</h3>
+            <ul>
+                <li>Valid JWT token with <code>alg: "none"</code></li>
+                <li>Payload must contain <code>role: "admin"</code></li>
+                <li>Complete exploitation chain required</li>
+            </ul>
+            <p class="hint-text">💡 Submit your forged administrative token using a POST request with a JWT token parameter.</p>
+        </div>
+    <% } %>
+</div>
+
+<style>
+    .admin-container {
+        text-align: left;
+    }
+
+    .admin-header h2 {
+        margin-bottom: 5px;
+    }
+
+    .admin-subtitle {
+        color: var(--accent-cyan);
+        font-size: 0.9rem;
+        margin: 0 0 20px 0;
+    }
+
+    .success-alert.large, .error-alert.large {
+        display: flex;
+        align-items: flex-start;
+        gap: 15px;
+        padding: 20px;
+        border-radius: 8px;
+        margin-bottom: 25px;
+    }
+
+    .success-alert.large {
+        background: rgba(0, 240, 255, 0.1);
+        border: 1px solid var(--accent-cyan);
+        color: var(--accent-cyan);
+    }
+
+    .error-alert.large {
+        background: rgba(255, 77, 77, 0.1);
+        border: 1px solid #ff4d4d;
+        color: #ff4d4d;
+    }
+
+    .success-alert.large .alert-icon, .error-alert.large .alert-icon {
+        font-size: 1.5rem;
+        flex-shrink: 0;
+        margin-top: 3px;
+    }
+
+    .success-alert.large p, .error-alert.large p {
+        margin: 5px 0;
+    }
+
+    .admin-dashboard {
+        background: rgba(0, 0, 0, 0.2);
+        border: 1px solid var(--border-color);
+        padding: 20px;
+        border-radius: 8px;
+        margin-top: 20px;
+    }
+
+    .admin-dashboard h3 {
+        margin-top: 0;
+        color: var(--accent-cyan);
+    }
+
+    .operations-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 15px;
+        margin: 15px 0;
+    }
+
+    .op-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 15px;
+        background: rgba(0, 240, 255, 0.05);
+        border: 1px solid var(--border-color);
+        border-radius: 6px;
+    }
+
+    .op-label {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: var(--text-secondary);
+        margin-bottom: 8px;
+    }
+
+    .op-value {
+        font-family: var(--font-mono);
+        color: var(--accent-cyan);
+        font-weight: 700;
+        font-size: 1.1rem;
+    }
+
+    .warning-text {
+        color: var(--accent-purple);
+        font-size: 0.9rem;
+        margin-top: 15px;
+        font-style: italic;
+    }
+
+    .access-requirements {
+        background: rgba(0, 0, 0, 0.2);
+        border: 1px solid var(--border-color);
+        padding: 20px;
+        border-radius: 8px;
+        margin-top: 20px;
+    }
+
+    .access-requirements h3 {
+        margin-top: 0;
+        color: var(--accent-cyan);
+    }
+
+    .access-requirements ul {
+        margin: 15px 0;
+        padding-left: 20px;
+    }
+
+    .access-requirements li {
+        margin: 10px 0;
+        color: var(--text-secondary);
+    }
+
+    .access-requirements code {
+        background: rgba(0, 0, 0, 0.2);
+        padding: 2px 6px;
+        border-radius: 4px;
+        color: var(--accent-cyan);
+        font-family: var(--font-mono);
+    }
+
+    .hint-text {
+        background: rgba(176, 38, 255, 0.1);
+        padding: 12px;
+        border-left: 2px solid var(--accent-purple);
+        margin-top: 12px;
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+    }
+</style>

@@ -1,18 +1,163 @@
-<h2>Session Overview Dashboard</h2>
-
-<% if (flag) { %>
-    <p>Administrator session established.</p>
-    <div class="flag-box">
-        <%= flag %>
+<div class="profile-container">
+    <div class="profile-header">
+        <h2>Session Dashboard</h2>
+        <p class="profile-subtitle">User authentication and authorization status</p>
     </div>
-<% } else { %>
-    <p>Standard profile mapped. Elevated functions are restricted.</p>
-    
-    <h3>Current Session Profile</h3>
-    <pre><%= JSON.stringify(session, null, 2) %></pre>
-    
-    <p style="color: #666; font-size: 0.9rem; margin-top: 20px;">
-        Note: The 'session_data' cookie stores the active role and access level. Valid administrative access requires level 1 for user "admin".
-    </p>
 
-<% } %>
+    <% if (flag) { %>
+        <div class="success-alert">
+            <span class="alert-icon">✓</span>
+            <p>Administrator session established and verified.</p>
+        </div>
+        <div class="flag-box">
+            <%= flag %>
+        </div>
+    <% } else { %>
+        <div class="profile-info">
+            <p>Current session profile: <strong><%= session.user || 'unknown' %></strong></p>
+            <p>Access Level: <strong><%= session.access %></strong></p>
+            <% if (warning) { %>
+                <div class="warning-alert">
+                    <span class="alert-icon">⚠</span>
+                    <p><%= warning %></p>
+                </div>
+            <% } %>
+        </div>
+
+        <div class="session-details">
+            <h3>Session Data</h3>
+            <div class="code-block">
+<pre><code><%= JSON.stringify(session, null, 2) %></code></pre>
+            </div>
+            <p class="hint-text">💡 <strong>Hint:</strong> This session data is stored in your browser cookie as Base64-encoded JSON. Edit the browser's developer tools to modify it.</p>
+        </div>
+
+        <div class="exploit-guide">
+            <h3>Requirements for Admin Access</h3>
+            <ul>
+                <li>User field must be: <code>admin</code></li>
+                <li>Access field must be: <code>1</code></li>
+                <li>Timestamp must be recent (within 1 hour)</li>
+                <li>Data must be Base64 encoded as JSON</li>
+            </ul>
+        </div>
+    <% } %>
+</div>
+
+<style>
+    .profile-container {
+        text-align: left;
+    }
+
+    .profile-header h2 {
+        margin-bottom: 5px;
+    }
+
+    .profile-subtitle {
+        color: var(--accent-cyan);
+        font-size: 0.9rem;
+        margin: 0 0 20px 0;
+    }
+
+    .profile-info {
+        background: rgba(0, 240, 255, 0.05);
+        border: 1px solid var(--border-color);
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+
+    .profile-info p {
+        margin: 8px 0;
+    }
+
+    .warning-alert {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: rgba(255, 193, 7, 0.1);
+        border: 1px solid #ffc107;
+        color: #ffc107;
+        padding: 12px;
+        border-radius: 6px;
+        margin-top: 12px;
+    }
+
+    .warning-alert .alert-icon {
+        font-size: 1.2rem;
+    }
+
+    .warning-alert p {
+        margin: 0;
+    }
+
+    .session-details {
+        background: rgba(0, 0, 0, 0.2);
+        border: 1px solid var(--border-color);
+        padding: 20px;
+        border-radius: 8px;
+        margin: 20px 0;
+    }
+
+    .session-details h3 {
+        margin-top: 0;
+        color: var(--accent-cyan);
+    }
+
+    .code-block {
+        background: rgba(0, 0, 0, 0.4);
+        border: 1px solid var(--border-color);
+        border-radius: 6px;
+        overflow-x: auto;
+        margin: 12px 0;
+    }
+
+    .code-block code {
+        display: block;
+        padding: 15px;
+        font-family: var(--font-mono);
+        color: var(--accent-cyan);
+        font-size: 0.9rem;
+        margin: 0;
+    }
+
+    .hint-text {
+        background: rgba(176, 38, 255, 0.1);
+        padding: 12px;
+        border-left: 2px solid var(--accent-purple);
+        margin: 12px 0;
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+    }
+
+    .exploit-guide {
+        background: rgba(0, 240, 255, 0.05);
+        border: 1px solid var(--border-color);
+        padding: 15px;
+        border-radius: 8px;
+        margin-top: 20px;
+    }
+
+    .exploit-guide h3 {
+        margin-top: 0;
+        color: var(--accent-cyan);
+    }
+
+    .exploit-guide ul {
+        margin: 10px 0;
+        padding-left: 20px;
+    }
+
+    .exploit-guide li {
+        margin: 8px 0;
+        color: var(--text-secondary);
+    }
+
+    .exploit-guide code {
+        background: rgba(0, 0, 0, 0.2);
+        padding: 2px 6px;
+        border-radius: 4px;
+        color: var(--accent-cyan);
+        font-family: var(--font-mono);
+    }
+</style>

@@ -1,26 +1,106 @@
-<h2>Employee Network Login</h2>
-
-<% if (flag) { %>
-    <p>Authentication validation passed.</p>
-    <div class="flag-box">
-        <%= flag %>
+<div class="login-container">
+    <div class="login-header">
+        <h2>Employee Network Portal</h2>
+        <p class="login-subtitle">Enterprise Single Sign-On (SSO) Authentication</p>
     </div>
-<% } else { %>
-    <p>Please authenticate using your active directory credentials.</p>
-    
-    <% if (error) { %>
-        <div class="error"><%= error %></div>
-    <% } %>
 
-    <form action="/login" method="POST">
-        <div class="input-group">
-            <label for="username">Username</label>
-            <input type="text" id="username" name="username" placeholder="e.g. jdoe" required>
+    <% if (flag) { %>
+        <div class="success-alert">
+            <span class="alert-icon">✓</span>
+            <p>Authentication validation passed successfully.</p>
         </div>
-        <div class="input-group">
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" required>
+        <div class="flag-box">
+            <%= flag %>
         </div>
-        <button type="submit">Secure Login</button>
-    </form>
-<% } %>
+        <p class="info-text" style="margin-top: 20px;">You have been granted temporary access. All login attempts are logged.</p>
+    <% } else { %>
+        <p class="login-info">Enterprise credentials required. Your activity is monitored.</p>
+        
+        <% if (error) { %>
+            <div class="error-alert">
+                <span class="alert-icon">⚠</span>
+                <p><%= error %></p>
+            </div>
+        <% } %>
+
+        <form action="/login" method="POST" class="login-form">
+            <div class="input-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="employee_id" required autocomplete="off">
+                <small class="input-hint">Hint: Try to find credentials in the web application</small>
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="••••••••" required>
+                <small class="input-hint">Look for exposed credentials in unexpected places</small>
+            </div>
+            <button type="submit">Authenticate</button>
+        </form>
+    <% } %>
+</div>
+
+<style>
+    .login-container {
+        text-align: left;
+    }
+
+    .login-header h2 {
+        margin-bottom: 5px;
+    }
+
+    .login-subtitle {
+        color: var(--accent-cyan);
+        font-size: 0.9rem;
+        margin: 0 0 20px 0;
+    }
+
+    .login-info {
+        color: var(--text-secondary);
+        margin: 15px 0;
+        font-size: 0.95rem;
+        border-left: 2px solid var(--accent-purple);
+        padding-left: 12px;
+    }
+
+    .success-alert, .error-alert {
+        display: flex;
+        align-items: center;
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        gap: 12px;
+    }
+
+    .success-alert {
+        background: rgba(0, 240, 255, 0.1);
+        border: 1px solid var(--accent-cyan);
+        color: var(--accent-cyan);
+    }
+
+    .error-alert {
+        background: rgba(255, 77, 77, 0.1);
+        border: 1px solid #ff4d4d;
+        color: #ff4d4d;
+    }
+
+    .alert-icon {
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+
+    .alert-icon + p {
+        margin: 0;
+    }
+
+    .input-hint {
+        display: block;
+        font-size: 0.75rem;
+        color: var(--accent-purple);
+        margin-top: 5px;
+        font-style: italic;
+    }
+
+    .login-form {
+        margin-top: 20px;
+    }
+</style>
