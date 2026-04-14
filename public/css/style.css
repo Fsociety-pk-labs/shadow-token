@@ -92,6 +92,16 @@ html, body {
     100% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.6; }
 }
 
+@keyframes flag-glow {
+    0%, 100% { text-shadow: 0 0 5px rgba(255, 183, 0, 0.5), 0 0 10px rgba(255, 183, 0, 0.3); }
+    50% { text-shadow: 0 0 15px rgba(255, 183, 0, 0.8), 0 0 25px rgba(255, 183, 0, 0.5); }
+}
+
+@keyframes flag-border-glow {
+    0%, 100% { border-color: var(--flag-amber); box-shadow: 0 0 10px rgba(255, 183, 0, 0.3); }
+    50% { border-color: var(--glow-red); box-shadow: 0 0 20px rgba(255, 183, 0, 0.6), inset 0 0 10px rgba(255, 183, 0, 0.1); }
+}
+
 /* Navigation - Glassmorphism */
 header.top-nav {
     position: sticky;
@@ -277,13 +287,15 @@ button:hover, .btn-primary:hover {
 .flag-box {
     margin: 2rem 0;
     padding: 1.5rem;
-    background: rgba(255, 183, 0, 0.05);
-    border: 1px dashed var(--flag-amber);
+    background: rgba(255, 183, 0, 0.08);
+    border: 2px dashed var(--flag-amber);
     color: var(--flag-amber);
     font-family: var(--font-mono);
     text-align: center;
     font-size: 1.2rem;
-    text-shadow: 0 0 10px rgba(255, 183, 0, 0.5);
+    animation: flag-border-glow 2s ease-in-out infinite;
+    box-shadow: 0 0 15px rgba(255, 183, 0, 0.3), inset 0 0 15px rgba(255, 183, 0, 0.05);
+    position: relative;
 }
 
 .success-alert {
