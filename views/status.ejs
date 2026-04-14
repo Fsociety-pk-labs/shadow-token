@@ -31,8 +31,8 @@
 
 <div class="flag-box" style="margin-top: 2rem;">
     <% if (flag) { %>
-        <div style="font-size: 0.8rem; color: var(--flag-amber); margin-bottom: 0.5rem; font-weight: bold; animation: pulse 1s infinite;">🚩 FLAG 1/5 CAPTURED!</div>
-        <%= flag %>
+        <div style="font-size: 0.8rem; color: var(--flag-amber); margin-bottom: 1rem; font-weight: bold; animation: pulse 0.8s infinite; letter-spacing: 2px;">🚩 FLAG 1/5 CAPTURED! 🚩</div>
+        <div style="font-size: 1.3rem; font-weight: bold; letter-spacing: 1px; line-height: 1.8; word-break: break-all; animation: flag-text-glow 2s ease-in-out infinite;"><%= flag %></div>
     <% } else { %>
         <span style="opacity: 0.7; font-family: 'Share Tech Mono', monospace;">DIAGNOSTIC OUTPUT: STREAM_STABLE_0x200</span>
     <% } %>

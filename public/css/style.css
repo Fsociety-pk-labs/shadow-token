@@ -98,8 +98,18 @@ html, body {
 }
 
 @keyframes flag-border-glow {
-    0%, 100% { border-color: var(--flag-amber); box-shadow: 0 0 10px rgba(255, 183, 0, 0.3); }
-    50% { border-color: var(--glow-red); box-shadow: 0 0 20px rgba(255, 183, 0, 0.6), inset 0 0 10px rgba(255, 183, 0, 0.1); }
+    0%, 100% { border-color: var(--flag-amber); box-shadow: 0 0 20px rgba(255, 183, 0, 0.4), inset 0 0 20px rgba(255, 183, 0, 0.1); }
+    50% { border-color: var(--glow-red); box-shadow: 0 0 40px rgba(255, 183, 0, 0.8), inset 0 0 30px rgba(255, 183, 0, 0.2), 0 0 60px rgba(230, 48, 48, 0.6); }
+}
+
+@keyframes flag-pulse-bg {
+    0%, 100% { background: rgba(255, 183, 0, 0.08); }
+    50% { background: rgba(255, 183, 0, 0.15); }
+}
+
+@keyframes flag-text-glow {
+    0%, 100% { color: var(--flag-amber); text-shadow: 0 0 10px rgba(255, 183, 0, 0.5); }
+    50% { color: #ffcc00; text-shadow: 0 0 20px rgba(255, 183, 0, 1), 0 0 30px rgba(255, 183, 0, 0.7); }
 }
 
 /* Navigation - Glassmorphism */
@@ -286,16 +296,27 @@ button:hover, .btn-primary:hover {
 /* Flag & Alerts */
 .flag-box {
     margin: 2rem 0;
-    padding: 1.5rem;
+    padding: 2rem 1.5rem;
     background: rgba(255, 183, 0, 0.08);
-    border: 2px dashed var(--flag-amber);
+    border: 3px solid var(--flag-amber);
     color: var(--flag-amber);
     font-family: var(--font-mono);
     text-align: center;
     font-size: 1.2rem;
-    animation: flag-border-glow 2s ease-in-out infinite;
-    box-shadow: 0 0 15px rgba(255, 183, 0, 0.3), inset 0 0 15px rgba(255, 183, 0, 0.05);
+    font-weight: bold;
+    animation: flag-border-glow 2s ease-in-out infinite, flag-pulse-bg 3s ease-in-out infinite;
+    box-shadow: 0 0 20px rgba(255, 183, 0, 0.4), inset 0 0 20px rgba(255, 183, 0, 0.1);
     position: relative;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.flag-box:hover {
+    box-shadow: 0 0 50px rgba(255, 183, 0, 0.8), inset 0 0 30px rgba(255, 183, 0, 0.2);
+}
+
+.flag-box *:not(div) {
+    animation: flag-text-glow 2s ease-in-out infinite;
 }
 
 .success-alert {
